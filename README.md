@@ -112,3 +112,28 @@ go mod tidy
 
 This command will remove any entries from the ``go.sum`` file that are no longer needed based on your updated ``go.mod`` file.
 
+## Use Case - Task Assignment:
+
+a). Allow users to assign tasks to specific team members or collaborators.
+
+b). Add an endpoint to retrieve tasks assigned to a particular user.
+
+### To Be Implemented
+
+1. You'll need to modify the existing task table to include a new column for storing the user ID of the team member to whom the task is assigned.
+2. You'll need to add a new API endpoint that allows users to assign tasks to specific team members. This endpoint should receive the task ID and the user ID of the assignee as input.
+3. You'll also need to add an endpoint that allows users to retrieve tasks assigned to a particular team member. This endpoint should receive the user ID as input and return a list of tasks assigned to that user.
+4. You'll need to update the Task details wherever applicable and it should show one addition field Assigned To.
+
+
+## Use Case - Task Comments:
+
+a). Allow users to add comments to tasks to provide updates or additional information.
+
+b). Implement an endpoint to retrieve task comments and display them in the task details view.
+
+### To Be Implemented
+
+1. Create a new table to store task comments. The table could be named task_comment and could have the following columns: id (primary key), task_id (foreign key to reference the task the comment belongs to), comment (the actual comment text), and created_at (timestamp for when the comment was added).
+2. Add a new API endpoint that allows users to add comments to a task. This endpoint should receive the task ID and the comment text as input, and then insert the comment into the task_comment table.
+3. Add a new API endpoint that allows users to retrieve all comments for a specific task. This endpoint should receive the task ID as input and return a list of comments associated with that task.
