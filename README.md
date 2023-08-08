@@ -142,6 +142,7 @@ b). Implement an endpoint to retrieve task comments and display them in the task
 
 1. Add unit tests to all your code you have created so far.
 2. Aim to achieve 80% code coverage.
+3. Generate a code report with [Go Test Report](https://github.com/vakenbolt/go-test-report).
 
 ## Integration tests:
 
