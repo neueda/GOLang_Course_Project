@@ -141,12 +141,18 @@ b). Implement an endpoint to retrieve task comments and display them in the task
 ## Unit tests:
 
 1. Add unit tests to all your code you have created so far.
-2. Aim to achieve 80% code coverage.
-3. Generate a code report with [Go Test Report](https://github.com/vakenbolt/go-test-report).
+2. Use the [in-built](https://go.dev/doc/tutorial/add-a-test) library to create unit tests.
+3. Aim to achieve 80% code coverage.
+4. Generate a code report with [Go Test Report](https://github.com/vakenbolt/go-test-report).
+
+## Swagger integration
+
+1. Add [Swagger documentation](https://github.com/go-swagger/go-swagger) to your Go project.
+2. Make any changes needed to document your APIs.
 
 ## Integration tests:
 
-1. Add integration tests to test your API functionality.
+1. Add [integration tests](https://go.dev/blog/integration-test-coverage) to test your API functionality.
 
 ### Tips
 - Have a clear understanding of what your API endpoint should do before writing your test.
@@ -154,7 +160,7 @@ b). Implement an endpoint to retrieve task comments and display them in the task
 
 ## Docker deployment:
 
-Create your Dockerfile. Don't forget to:
+Create your [Dockerfile](https://docs.docker.com/language/golang/build-images/). Don't forget to:
 - Specify your parent image
 - Create the app directory for your app's source code.
 - Copy everything from your root directory into your work directory.
@@ -162,3 +168,8 @@ Create your Dockerfile. Don't forget to:
 - Build your go app with any configuration.
 - Expose your container port(s).
 - Execute the command to run your go app when the container starts.
+
+### docker-compose
+You will need to orchestrate the Go project and the postgres database.
+
+1. Create your docker-compose file to manager both your Go project and postgres database.
