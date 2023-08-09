@@ -137,3 +137,28 @@ b). Implement an endpoint to retrieve task comments and display them in the task
 1. Create a new table to store task comments. The table could be named task_comment and could have the following columns: id (primary key), task_id (foreign key to reference the task the comment belongs to), comment (the actual comment text), and created_at (timestamp for when the comment was added).
 2. Add a new API endpoint that allows users to add comments to a task. This endpoint should receive the task ID and the comment text as input, and then insert the comment into the task_comment table.
 3. Add a new API endpoint that allows users to retrieve all comments for a specific task. This endpoint should receive the task ID as input and return a list of comments associated with that task.
+
+## Unit tests:
+
+1. Add unit tests to all your code you have created so far.
+2. Aim to achieve 80% code coverage.
+3. Generate a code report with [Go Test Report](https://github.com/vakenbolt/go-test-report).
+
+## Integration tests:
+
+1. Add integration tests to test your API functionality.
+
+### Tips
+- Have a clear understanding of what your API endpoint should do before writing your test.
+- Include all aspects of functionality including any input validation and error handling.
+
+## Docker deployment:
+
+Create your Dockerfile. Don't forget to:
+- Specify your parent image
+- Create the app directory for your app's source code.
+- Copy everything from your root directory into your work directory.
+- Install Go dependencies.
+- Build your go app with any configuration.
+- Expose your container port(s).
+- Execute the command to run your go app when the container starts.
