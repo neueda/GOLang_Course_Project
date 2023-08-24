@@ -1,25 +1,55 @@
 package model
 
 import (
-	"database/sql"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type Task struct {
-	ID          int       `json:"id"`
-	Title       string    `json:"title"`
-	Description string    `json:"description"`
-	Completed   bool      `json:"completed"`
-	CreatedAt   time.Time `json:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at"`
-	Items       []string  `json:"items"`
+	ID          int        `json:"id"`
+	Title       string     `json:"title"`
+	Description string     `json:"description"`
+	Completed   bool       `json:"completed"`
+	CreatedAt   time.Time  `json:"created_at"`
+	UpdatedAt   time.Time  `json:"updated_at"`
+	Items       []TaskItem `json:"items" gorm:"foreignKey:Task_ID"` // Establishes the relationship with TaskItem
+}
+
+func (Task) TableName() string {
+	return "task" // Specify the custom table name here
+}
+
+type TaskItem struct {
+	ID      int    `json:"id"`
+	Task_ID int    `json:"task_id"`
+	Item    string `json:"description"`
+}
+
+func (TaskItem) TableName() string {
+	return "task_item" // Specify the custom table name here
 }
 
 type TaskDto struct {
-	DB *sql.DB
+	DB *gorm.DB
 }
 
 func (taskDto TaskDto) GetAllTasks() ([]Task, error) {
+	var task []Task
+
+	// Using GORM to perform the equivalent query with eager loading of associated items
+	result := taskDto.DB.Preload("Items").Find(&task).Unscoped()
+
+	if result.Error != nil {
+		return nil, result.Error
+	}
+
+	// The Find() method has executed the query and loaded associated items
+
+	return task, nil
+}
+
+/* func (taskDto TaskDto) GetAllTasks() ([]Task, error) {
 
 	query := `
 		SELECT t.id, t.title, t.description, t.completed, t.created_at, t.updated_at, ti.item
@@ -75,9 +105,19 @@ func (taskDto TaskDto) GetAllTasks() ([]Task, error) {
 	}
 
 	return tasks, nil
-}
+} */
 
 func (taskDto TaskDto) Insert(task *Task) error {
+	// Using GORM to perform the equivalent insert operation
+	result := taskDto.DB.Create(task).Unscoped()
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
+}
+
+/* func (taskDto TaskDto) Insert(task *Task) error {
 
 	stmt, err := taskDto.DB.Prepare(`
 			INSERT INTO task (title, description, completed, created_at, updated_at)
@@ -99,50 +139,102 @@ func (taskDto TaskDto) Insert(task *Task) error {
 
 	return nil
 
-}
+} */
 
 func (taskDto TaskDto) Get(id int64) (*Task, error) {
 	return nil, nil
 }
 
 func (taskDto TaskDto) UpdateTask(id int, task *Task) error {
+	// Using GORM to perform the equivalent update operation
+	result := taskDto.DB.Model(&Task{}).Where("id = ?", id).Updates(Task{
+		Title:       task.Title,
+		Description: task.Description,
+		Completed:   task.Completed,
+		UpdatedAt:   time.Now(),
+		Items:       task.Items, // Update the Items field directly
+	}).Unscoped()
+	if result.Error != nil {
+		return result.Error
+	}
 
-	stmt, err := taskDto.DB.Prepare(`
-		UPDATE task
-		SET title = $1, description = $2, completed = $3, updated_at = $4
-		WHERE id = $5
-	`)
+	// Delete existing task items
+	err := taskDto.DB.Where("task_id = ?", id).Delete(&TaskItem{}).Unscoped().Error
 	if err != nil {
 		return err
 	}
-	defer stmt.Close()
 
-	_, err = stmt.Exec(task.Title, task.Description, task.Completed, time.Now(), id)
-	if err != nil {
-		return err
-	}
-
-	_, err = taskDto.DB.Exec("DELETE FROM task_item WHERE task_id = $1", task.ID)
-	if err != nil {
-		return err
-	}
-
-	stmt, err = taskDto.DB.Prepare("INSERT INTO task_item (task_id, item) VALUES ($1, $2)")
-	if err != nil {
-		return err
-	}
-	defer stmt.Close()
-
+	// Insert new task items
 	for _, item := range task.Items {
-		_, err := stmt.Exec(task.ID, item)
+		taskItem := TaskItem{
+			Task_ID: id,
+			Item:    item.Item,
+		}
+		err := taskDto.DB.Create(&taskItem).Error
 		if err != nil {
 			return err
 		}
 	}
+
 	return nil
 }
 
+/*
+	 func (taskDto TaskDto) UpdateTask(id int, task *Task) error {
+
+		stmt, err := taskDto.DB.Prepare(`
+			UPDATE task
+			SET title = $1, description = $2, completed = $3, updated_at = $4
+			WHERE id = $5
+		`)
+		if err != nil {
+			return err
+		}
+		defer stmt.Close()
+
+		_, err = stmt.Exec(task.Title, task.Description, task.Completed, time.Now(), id)
+		if err != nil {
+			return err
+		}
+
+		_, err = taskDto.DB.Exec("DELETE FROM task_item WHERE task_id = $1", task.ID)
+		if err != nil {
+			return err
+		}
+
+		stmt, err = taskDto.DB.Prepare("INSERT INTO task_item (task_id, item) VALUES ($1, $2)")
+		if err != nil {
+			return err
+		}
+		defer stmt.Close()
+
+		for _, item := range task.Items {
+			_, err := stmt.Exec(task.ID, item)
+			if err != nil {
+				return err
+			}
+		}
+		return nil
+	}
+*/
+
 func (taskDto TaskDto) DeleteTask(id int) error {
+	// Using GORM to perform the delete operation
+	result := taskDto.DB.Where("id = ?", id).Delete(&Task{}).Unscoped()
+	if result.Error != nil {
+		return result.Error
+	}
+
+	/* // You might want to also delete associated items for the task
+	err := taskDto.DB.Where("task_id = ?", id).Delete(&TaskItem{}).Error
+	if err != nil {
+		return err
+	} */
+
+	return nil
+}
+
+/* func (taskDto TaskDto) DeleteTask(id int) error {
 
 	stmt, err := taskDto.DB.Prepare(`
 		DELETE FROM task WHERE id = $1
@@ -158,9 +250,23 @@ func (taskDto TaskDto) DeleteTask(id int) error {
 	}
 
 	return nil
-}
+} */
 
 func (taskDto TaskDto) InsertTaskItem(taskID int, item string) error {
+	taskItem := TaskItem{
+		Task_ID: taskID,
+		Item:    item,
+	}
+
+	err := taskDto.DB.Create(&taskItem).Error
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+/* func (taskDto TaskDto) InsertTaskItem(taskID int, item string) error {
 
 	stmt, err := taskDto.DB.Prepare(`
 		INSERT INTO task_item (task_id, item)
@@ -177,9 +283,9 @@ func (taskDto TaskDto) InsertTaskItem(taskID int, item string) error {
 	}
 
 	return nil
-}
+} */
 
-func (taskDto TaskDto) GetTask(id int) (*Task, error) {
+/* func (taskDto TaskDto) GetTask(id int) (*Task, error) {
 	query := `
 		SELECT t.id, t.title, t.description, t.completed, t.created_at, t.updated_at, ti.item
 		FROM task t
@@ -217,6 +323,17 @@ func (taskDto TaskDto) GetTask(id int) (*Task, error) {
 	}
 
 	if err = rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return task, nil
+} */
+
+func (taskDto TaskDto) GetTask(id int) (*Task, error) {
+	task := &Task{}
+
+	err := taskDto.DB.Preload("Items").First(task, id).Unscoped().Error
+	if err != nil {
 		return nil, err
 	}
 
