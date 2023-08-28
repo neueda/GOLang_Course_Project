@@ -129,12 +129,12 @@ func (app *application) createTaskHandler2(w http.ResponseWriter, r *http.Reques
 
 	// Assuming you have the list of items for the task available in the createTask.Items slice.
 	// You can now insert these items into the task_item table.
-	for _, item := range createTask.Items {
-		err = taskDto.InsertTaskItem(createTask.ID, item)
+	/* for _, item := range createTask.Items {
+		err = taskDto.InsertTaskItem(createTask.ID, item.Item)
 		if err != nil {
 			http.Error(w, "Error inserting task items", http.StatusInternalServerError)
 		}
-	}
+	} */
 
 	// Encode the struct to JSON and send it as the HTTP response.
 	err = app.writeJSON(w, http.StatusCreated, createTask, nil)

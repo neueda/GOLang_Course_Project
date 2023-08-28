@@ -173,3 +173,120 @@ Create your [Dockerfile](https://docs.docker.com/language/golang/build-images/).
 You will need to orchestrate the Go project and the postgres database.
 
 1. Create your docker-compose file to manager both your Go project and postgres database.
+
+## Go Collections
+
+- https://github.com/emirpasic/gods
+- https://pkg.go.dev/std
+    - container
+    - maps
+
+### Use Case
+
+Write a simple Go program to:
+- Create a list of 10 Tasks.
+- Perform simple CRUD operations on this list.
+- Create a map with TaskId as key and Items as values.
+- Add an Item directly using this Map for the provided TaskId
+- Sort the Tasks alphabetically, creation date etc.
+
+
+## GORM Integration
+
+
+
+### Install GORM
+
+Make sure you have GORM installed. You can install it using the following command:
+
+~~~go
+go get -u gorm.io/gorm
+~~~
+
+### Import GORM
+
+Import GORM in your main.go file:
+
+~~~go
+import (
+    "gorm.io/gorm"
+    "gorm.io/driver/postgres" // Import the PostgreSQL driver
+)
+~~~
+
+### Define GORM Models
+
+Define your GORM models for the tables you're working with. For example, if our case Task and Task_Item tables:
+
+~~~go
+
+type Task struct {
+	ID          int        `json:"id"`
+	Title       string     `json:"title"`
+	Description string     `json:"description"`
+	Completed   bool       `json:"completed"`
+	CreatedAt   time.Time  `json:"created_at"`
+	UpdatedAt   time.Time  `json:"updated_at"`
+	Items       []TaskItem `json:"items" gorm:"foreignKey:Task_ID"` // Establishes the relationship with TaskItem
+}
+
+type TaskItem struct {	
+	ID      int    `json:"id"`
+	Task_ID int    `json:"task_id"`
+	Item    string `json:"description"`
+}
+
+~~~
+
+### Specify DB Table Name
+
+~~~go
+
+func (Task) TableName() string {
+	return "task" // Specify the custom table name here
+}
+
+func (TaskItem) TableName() string {
+	return "task_item" // Specify the custom table name here
+}
+
+~~~
+
+### Initialize GORM
+
+Initialize the GORM instance using your database connection details and update reference of db to 
+
+~~~go
+
+func main() {
+    // ...
+    db, err := gorm.Open(postgres.Open(cfg.db.dsn), &gorm.Config{})
+    if err != nil {
+        logger.Fatal(err)
+    }
+    // ...
+}
+
+~~~
+
+### Replace SQL Queries with GORM
+
+Replace your SQL queries with GORM methods. For example, to create a Task record with Items:
+
+~~~go
+
+func (taskDto TaskDto) Insert(task *Task) error {
+	// Using GORM to perform the equivalent insert operation
+	result := taskDto.DB.Create(task).Unscoped()
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
+}
+
+~~~
+
+Similarly, check for other CRUD operations.
+
+Note: Don't remove the SQL implementation.

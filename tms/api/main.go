@@ -9,8 +9,10 @@ import (
 	"os"
 	"time"
 
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+
 	"context"
-	"database/sql"
 
 	_ "github.com/lib/pq"
 )
@@ -30,7 +32,7 @@ type config struct {
 type application struct {
 	config config
 	logger *log.Logger
-	db     *sql.DB
+	db     *gorm.DB
 }
 
 func main() {
@@ -47,8 +49,6 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-
-	defer db.Close()
 
 	logger.Printf("database connection pool established")
 
@@ -74,9 +74,12 @@ func main() {
 }
 
 // The openDB() function returns a sql.DB connection pool.
-func openDB(cfg config) (*sql.DB, error) {
+func openDB(cfg config) (*gorm.DB, error) {
 
-	db, err := sql.Open("postgres", cfg.db.dsn)
+	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
+
+	// db, err := sql.Open("postgres", cfg.db.dsn)
+	db, err := gorm.Open(postgres.Open(cfg.db.dsn), &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +87,7 @@ func openDB(cfg config) (*sql.DB, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	err = db.PingContext(ctx)
+	logger.Printf("Context %s ", ctx)
 	if err != nil {
 		return nil, err
 	}
