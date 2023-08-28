@@ -1,3 +1,6 @@
+## Golang Concepts
+Go through the modules in the ```docs``` folder to grasp the basic concepts of Golang.
+
 ## Project Setup
 
 Create a directory ``task_management_system`` . This will be the HOME directory of the project.

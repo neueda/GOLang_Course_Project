@@ -1,8 +1,8 @@
-### Introduction
+## Introduction
 
 As a Java developer transitioning to GoLang (Go), it's crucial to understand the rich ecosystem and powerful standard library that GoLang offers. This wiki page aims to provide a comprehensive guide to the GoLang standard library and ecosystem, highlighting its key features, commonly used packages, and resources available. By familiarizing yourself with the GoLang ecosystem, you'll be well-equipped to leverage its strengths and efficiently develop applications in GoLang.
 
-### The GoLang Standard Library
+## The GoLang Standard Library
 
 GoLang comes with a robust standard library that provides a wide range of functionality out of the box. The standard library covers various domains, including networking, file operations, cryptography, testing, and more. Some essential packages in the GoLang standard library include:
 
