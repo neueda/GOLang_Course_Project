@@ -1,5 +1,5 @@
 ## Golang Concepts
-Go through the modules in the ```docs``` folder to grasp the basic concepts of Golang.
+Go through the modules in the ```docs``` folder to grasp the basic concepts of Golang. The continue with the project below.
 
 ## Project Setup
 
