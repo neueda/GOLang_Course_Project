@@ -193,14 +193,6 @@ Write a simple Go program to:
 - Add an Item directly using this Map for the provided TaskId
 - Sort the Tasks alphabetically, creation date etc.
 
-## Golang concurrency
-https://go.dev/tour/concurrency/1
-
-### Use Case
-Can you demonstrate a simple Go program that uses goroutines and channels to concurrently process a list of integers? 
-The program should calculate the square of each integer and return the results in a separate channel.
-Additionally, make sure to handle synchronization and ensure that all goroutines have finished before printing the results. Please provide the code for this concurrency example.
-
 ## GORM Integration
 
 
@@ -300,3 +292,12 @@ func (taskDto TaskDto) Insert(task *Task) error {
 Similarly, check for other CRUD operations.
 
 Note: Don't remove the SQL implementation.
+
+
+## Golang concurrency
+https://go.dev/tour/concurrency/1
+
+### Use Case
+Can you demonstrate a simple Go program that uses goroutines and channels to concurrently process a list of integers? 
+The program should calculate the square of each integer and return the results in a separate channel.
+Additionally, make sure to handle synchronization and ensure that all goroutines have finished before printing the results. Please provide the code for this concurrency example.
