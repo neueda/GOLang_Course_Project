@@ -12,5 +12,5 @@ The task Management API project aims to:
 
 ## Get Started
 - [Configure VS Code for Go](https://learn.microsoft.com/en-us/azure/developer/go/configure-visual-studio-code)
-- [Tutorial: Get started with Go](https://learn.microsoft.com/en-us/azure/developer/go/configure-visual-studio-code)
-- [Tutorial: Create a Go module](https://learn.microsoft.com/en-us/azure/developer/go/configure-visual-studio-code)
+- [Tutorial: Get started with Go](https://go.dev/doc/tutorial/getting-started)
+- [Tutorial: Create a Go module](https://go.dev/doc/tutorial/create-module)
