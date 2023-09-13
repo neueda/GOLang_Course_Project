@@ -15,3 +15,4 @@ The task Management API project aims to:
 - [Tutorial: Get started with Go](https://go.dev/doc/tutorial/getting-started)
 - [Tutorial: Create a Go module](https://go.dev/doc/tutorial/create-module)
 - [Book: Shipping Go](https://learning.oreilly.com/library/view/shipping-go/9781617299506/)
+- [Book: Go for Java Programmers](https://learning.oreilly.com/library/view/go-for-java/9781484271995/)
