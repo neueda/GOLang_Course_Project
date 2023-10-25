@@ -295,9 +295,19 @@ Note: Don't remove the SQL implementation.
 
 
 ## Golang concurrency
+### A Quick Tour
 https://go.dev/tour/concurrency/1
 
-### Use Case
+### Concurrency Exercise
 Can you demonstrate a simple Go program that uses goroutines and channels to concurrently process a list of integers? 
 The program should calculate the square of each integer and return the results in a separate channel.
 Additionally, make sure to handle synchronization and ensure that all goroutines have finished before printing the results. Please provide the code for this concurrency example.
+
+### A Deeper Dive into Concurrency
+Follow the below course to build a deeper understanding of Go Concurrency.
+- [Course: Up and Running with Concurrency in Go](https://learning.oreilly.com/videos/up-and-running/9781803233147/)
+
+### Concurrency Project: Google Translate
+Build a Google Translate project using advanced Golang programming techniques such as concurrency, parallelism, sequential processing, go-routines and more.
+
+- [Google Translate Project](https://learning.oreilly.com/videos/learn-go-by/9781804613214/9781804613214-video4_1/)
