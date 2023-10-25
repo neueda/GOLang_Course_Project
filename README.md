@@ -93,7 +93,9 @@ require github.com/julienschmidt/httprouter v1.3.0
 
 ### Defining the ``Task`` Model
 
-See ``task.go`` file
+- See ``task.go`` file
+- Use this Task model as a template for the upcoming assignments.
+- Go through the code and try to understand what each function is doing.
 
 ## Running the Project
 
@@ -116,6 +118,8 @@ go mod tidy
 This command will remove any entries from the ``go.sum`` file that are no longer needed based on your updated ``go.mod`` file.
 
 ## Use Case - Task Assignment:
+
+Using the above Task model as a template, go through the following assignment and implement your own code.
 
 a). Allow users to assign tasks to specific team members or collaborators.
 
