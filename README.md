@@ -1,11 +1,11 @@
 ## Golang Concepts
-Go through the modules in the ```docs``` folder to grasp the basic concepts of Golang. The continue with the project below.
+Go through the modules in the ```docs``` folder to grasp the basic concepts of Golang. Apart from these, you
+need to understand these two concepts:
 
-## Project Setup
-
+### How to enable Go Module
 Create a directory ``task_management_system`` . This will be the HOME directory of the project.
 
-Next, ``cd`` into this directory and run 
+Next, ``cd`` into this directory and run
 
 ~~~go 
 go mod init tms.zinkworks.com
@@ -29,15 +29,26 @@ go 1.20
 4. When you run or build the code in your project, Go will utilize the precise dependencies listed in the go.mod file. In case the required dependencies are not already present on your local machine, Go will automatically download them along with any recursive dependencies.
 5. Additionally, the go.mod file defines the module path (e.g., tms.zinkworks.com in our case), which acts as the root import path for the packages within your project.
 
+Next, you can continue with the project below.
+
+## Project Setup
+
+You need to clone this repo and understand the below directory structure. This repo implements CRUD 
+APIs for Task model. It contains two implementations - GORM & SQL. You need to focus on the SQL one.
+
+- Go through the code and try to understand what each function is doing.
+- Use this Task model as a template for the use cases.
+- Follow this template to implement the two use cases defined in this document.
+
 ### Directory Structure for the Project
 
-Go to home directory and create two more directory inside it.
+In the home directory, you will find two directories-
 
 ``model`` - this will contain all the models
 
 ``tms\api`` - this will contain all the APIs
 
-At this point you will see below directory structure along will few additional files that will be explained later.
+In the cloned repo, you will see below directory structure along will few additional files that will be explained later.
 
 ![Alt text](image.png)
 
