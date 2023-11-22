@@ -216,7 +216,9 @@ Write a simple Go program to:
 - Sort the Tasks alphabetically, creation date etc.
 
 ## GORM Integration (Optional)
-
+- GORM is a tool used to replace SQL.
+- There are various SQL frameworks used in the Go ecosystem, and each company usually has their own choice.
+- Therefore, it is good to know GORM exists, but any future Go project will likely have its own SQL framework, so it's not necessary to learn it in-depth right now.
 
 
 ### Install GORM
