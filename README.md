@@ -335,6 +335,6 @@ Build a Google Translate project using advanced Golang programming techniques su
 - [Google Translate Project](https://learning.oreilly.com/videos/learn-go-by/9781804613214/9781804613214-video4_1/)
 
 # Go Booking System
-Our [Zinkworks booking system](obs.zinkworks.com) is built on Go and React. Once you have completed this course, there is a requirement backlog waiting for you to put your Go skills into practice.
+Our [Zinkworks booking system](https://obs.zinkworks.com) is built on Go and React. Once you have completed this course, there is a requirement backlog waiting for you to put your Go skills into practice.
 
 Pick something from the booking system backlog (to be added), create a feature branch, build your code and then make a pull request for the repo owner to review.
