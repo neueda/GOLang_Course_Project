@@ -1,6 +1,13 @@
 ## Golang Concepts
-Go through the modules in the ```docs``` folder to grasp the basic concepts of Golang. Apart from these, you
-need to understand these two concepts:
+1. [Pre-requisites](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/00.%20Pre-requisites)
+2. [Overview + Optional tutorials](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/01.%20Overview)
+3. [Java vs. Go Similarities](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/02.%20Similarities%20and%20Differences)
+4. [Package structure & Variable declaration](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/03.%20Package%20Structure%20and%20Var%20declaration)
+5. [Go library and ecosystem](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/04.%20Golang%20Standard%20library%20and%20Ecosystem)
+6. [Go error handling](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/05.%20Error%20Handling)
+7. [Concurrency and Go routines](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/06.%20Concurrency%20and%20Goroutines)
+8. [Go Testing](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/07.%20Golang%20testing)
+9. [Go Modules](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/08.%20Golang%20Modules)
 
 ### How to enable Go Module
 Create a directory ``task_management_system`` . This will be the HOME directory of the project.
@@ -326,3 +333,8 @@ Follow the below course to build a deeper understanding of Go Concurrency.
 Build a Google Translate project using advanced Golang programming techniques such as concurrency, parallelism, sequential processing, go-routines and more.
 
 - [Google Translate Project](https://learning.oreilly.com/videos/learn-go-by/9781804613214/9781804613214-video4_1/)
+
+# Go Booking System
+Our [Zinkworks booking system](obs.zinkworks.com) is built on Go and React. Once you have completed this course, there is a requirement backlog waiting for you to put your Go skills into practice.
+
+Pick something from the booking system backlog (to be added), create a feature branch, build your code and then make a pull request for the repo owner to review.
