@@ -1,6 +1,6 @@
 ## Golang Concepts
 1. [Pre-requisites](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/00.%20Pre-requisites)
-2. [Overview + Optional tutorials](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/01.%20Overview)
+2. [Overview + Useful tutorials](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/01.%20Overview)
 3. [Java vs. Go Similarities](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/02.%20Similarities%20and%20Differences)
 4. [Package structure & Variable declaration](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/03.%20Package%20Structure%20and%20Var%20declaration)
 5. [Go library and ecosystem](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/04.%20Golang%20Standard%20library%20and%20Ecosystem)
