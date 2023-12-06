@@ -170,6 +170,11 @@ b). Implement an endpoint to retrieve task comments and display them in the task
 3. Aim to achieve 80% code coverage.
 4. Generate a code report with [Go Test Report](https://github.com/vakenbolt/go-test-report).
 
+### Useful testing tools + tips
+- [Go Testing by Example](https://research.swtch.com/testing)
+- [Generate Go Tests Automatically](https://github.com/cweill/gotests)
+- [Ginkgo](https://github.com/onsi/ginkgo)
+
 ## Swagger integration
 
 1. Add [Swagger documentation](https://github.com/go-swagger/go-swagger) to your Go project.
