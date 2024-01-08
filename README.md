@@ -9,6 +9,12 @@
 8. [Go Testing](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/07.%20Golang%20testing)
 9. [Go Modules](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/08.%20Golang%20Modules)
 
+## Progress Tracking
+- This course is self-directed.
+- We have a weekly meetup online where we go through progress and support required. If you want to be added to this meetup, contact the L+D manager.
+- Course tracker is [here](https://adeuennetworks-my.sharepoint.com/:x:/g/personal/david_caulfield_zinkworks_com/ETWPXwTMcG1GrjFcyr_vFsYBXveWj0B-a8m5yOdpP38KPQ?e=j7Zd4U).
+- The milestones are in weekly increments.
+
 ## Get Started
 ### How to enable Go Module
 Create a directory ``task_management_system`` . This will be the HOME directory of the project.
