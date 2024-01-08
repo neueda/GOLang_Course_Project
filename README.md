@@ -9,6 +9,7 @@
 8. [Go Testing](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/07.%20Golang%20testing)
 9. [Go Modules](https://github.com/neueda/GOLang_Course_Project/tree/main/docs/08.%20Golang%20Modules)
 
+## Get Started
 ### How to enable Go Module
 Create a directory ``task_management_system`` . This will be the HOME directory of the project.
 
