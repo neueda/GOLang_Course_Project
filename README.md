@@ -186,6 +186,7 @@ b). Implement an endpoint to retrieve task comments and display them in the task
 
 1. Add [Swagger documentation](https://github.com/go-swagger/go-swagger) to your Go project.
 2. Make any changes needed to document your APIs.
+3. [Useful tutorial](https://www.soberkoder.com/swagger-go-api-swaggo/)
 
 ## Integration tests:
 
